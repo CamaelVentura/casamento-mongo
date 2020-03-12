@@ -20,6 +20,10 @@ const PlaceSchema = new mongoose.Schema(
     type: {
       type: String,
       required: true
+    },
+    img: {
+      type: String,
+      required: true
     }
   },
   { timestamps: true }

@@ -6,13 +6,14 @@ export const store = async (req, res) => {
     address = '',
     description = '',
     phone = '(62) 0000-0000',
+    img = 'path',
     type
   } = req.body;
 
   const verify = await Place.findOne({ name });
 
   if (verify) {
-    return res.status(400).json({ Erro: 'Convidado ja cadastrado' });
+    return res.status(400).json({ Erro: 'Local ja cadastrado' });
   }
 
   const place = await Place.create({
@@ -20,7 +21,8 @@ export const store = async (req, res) => {
     address,
     description,
     phone,
-    type
+    type,
+    img
   });
 
   return res.json(place);
