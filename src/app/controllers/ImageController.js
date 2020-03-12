@@ -11,4 +11,6 @@ export const store = async (req, res) => {
   return res.json(placeUpdated);
 };
 
-export const index = async (req, res) => { };
+export const index = async (req, res) => {
+  console.log(res);
+};
