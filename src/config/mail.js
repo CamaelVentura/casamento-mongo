@@ -1,6 +1,8 @@
 export default {
   host: process.env.MAIL_HOST,
+  service: 'gmail',
   port: process.env.MAIL_PORT,
+  secure: true,
   auth: {
     user: process.env.MAIL_USER,
     pass: process.env.MAIL_PASS
