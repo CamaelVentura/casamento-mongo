@@ -19,7 +19,9 @@ export const update = async (req, res) => {
     },
     { new: true }
   );
-  const viewPath = resolve(__dirname, '..', 'views', 'emails');
+
+  const relativePath = resolve(dirname(module.parent.filename));
+  const viewPath = resolve(relativePath, '..', 'src', 'app', 'views', 'emails');
   if (!confirmed) {
     await Mail.sendMail({
       from: {
@@ -38,8 +40,6 @@ export const update = async (req, res) => {
       }
     });
   } else {
-    const relativePath = resolve(dirname(module.parent.filename));
-    console.log(relativePath);
     await Mail.sendMail({
       from: {
         name: `${name}`,
