@@ -1,4 +1,4 @@
-import { resolve } from 'path';
+import { resolve, dirname } from 'path';
 import Guest from '../schemas/Guest';
 import Mail from '../../lib/Mail';
 
@@ -38,6 +38,8 @@ export const update = async (req, res) => {
       }
     });
   } else {
+    const relativePath = resolve(dirname(module.parent.filename));
+    console.log(relativePath);
     await Mail.sendMail({
       from: {
         name: `${name}`,
