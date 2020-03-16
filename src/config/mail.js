@@ -1,8 +1,8 @@
 export default {
-  host: 'api.mailgun.net',
+  host: process.env.MAIL_HOST,
   auth: {
-    api_key: '7b3eb3b81d78368563300116e417ac50-ee13fadb-af2081f6',
-    domain: 'email.camael.club'
+    api_key: process.env.MAIL_KEY,
+    domain: process.env.MAIL_DOMAIN
   },
   default: {
     to: 'srocha_luizeduardo22@hotmail.com'
