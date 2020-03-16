@@ -12,6 +12,6 @@ export default {
       name: 'Casamento Perfeito',
       address: 'noreply@claraeluizeduardo.com'
     },
-    to: 'claraeluizeduardo@gamil.com'
+    to: 'claraeluizeduardo@gmail.com'
   }
 };
