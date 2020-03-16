@@ -1,6 +1,7 @@
 import nodemailer from 'nodemailer';
 
 import { resolve } from 'path';
+import mailgun from 'nodemailer-mailgun-transport';
 
 import nodemailerhbs from 'nodemailer-express-handlebars';
 import exphbs from 'express-handlebars';
@@ -9,14 +10,13 @@ import mailConfig from '../config/mail';
 
 class Mail {
   constructor() {
-    const { host, port, secure, auth, service } = mailConfig;
-    this.transporter = nodemailer.createTransport({
-      host,
-      service,
-      port,
-      secure,
-      auth: auth.user ? auth : null
-    });
+    const { host, auth } = mailConfig;
+    this.transporter = nodemailer.createTransport(
+      mailgun({
+        host,
+        auth: auth.api_key ? auth : null
+      })
+    );
 
     this.configureTemplates();
   }

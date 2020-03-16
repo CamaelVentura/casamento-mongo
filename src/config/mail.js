@@ -1,13 +1,17 @@
 export default {
-  host: process.env.MAIL_HOST,
+  host: 'api.mailgun.net',
   service: 'gmail',
   port: process.env.MAIL_PORT,
   secure: true,
   auth: {
-    user: process.env.MAIL_USER,
-    pass: process.env.MAIL_PASS
+    api_key: '7b3eb3b81d78368563300116e417ac50-ee13fadb-af2081f6',
+    domain: 'email.camael.club'
   },
   default: {
-    from: 'Casamento Perfeito <noreply@claraeluizeduardo.com'
+    from: {
+      name: 'Casamento Perfeito',
+      address: 'noreply@claraeluizeduardo.com'
+    },
+    to: 'claraeluizeduardo@gamil.com'
   }
 };

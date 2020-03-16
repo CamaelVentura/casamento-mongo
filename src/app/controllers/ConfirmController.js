@@ -20,7 +20,6 @@ export const update = async (req, res) => {
   );
   if (!confirmed) {
     await Mail.sendMail({
-      to: 'Camael <camaeloi@hotmail.com>',
       subject: 'Confirmacao de convidados',
       template: 'confirmation',
       context: {
@@ -30,15 +29,10 @@ export const update = async (req, res) => {
       }
     });
   } else {
+    console.log(`aquiiiiii`);
     await Mail.sendMail({
-      to: 'Camael <camaeloi@hotmail.com>',
       subject: 'Reconfirmacao de convidados',
-      template: 'reconfirmation',
-      context: {
-        name,
-        confirmed_adults,
-        confirmed_kids
-      }
+      html: '<b>Wow Big powerful letters</b>'
     });
   }
 
