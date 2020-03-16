@@ -5,6 +5,6 @@ export default {
     domain: process.env.MAIL_DOMAIN
   },
   default: {
-    to: 'claraeluizeduardo@gmail.com'
+    to: 'srocha_luizeduardo22@hotmail.com'
   }
 };
