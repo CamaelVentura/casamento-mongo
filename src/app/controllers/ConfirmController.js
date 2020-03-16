@@ -1,3 +1,4 @@
+import { resolve } from 'path';
 import Guest from '../schemas/Guest';
 import Mail from '../../lib/Mail';
 
@@ -18,21 +19,40 @@ export const update = async (req, res) => {
     },
     { new: true }
   );
+  const viewPath = resolve(__dirname, '..', 'views', 'emails');
   if (!confirmed) {
     await Mail.sendMail({
+      from: {
+        name: `${name}`,
+        address: 'noreply@claraeluizeduardo.com'
+      },
       subject: 'Confirmacao de convidados',
-      template: 'confirmation',
-      context: {
-        name,
-        confirmed_adults,
-        confirmed_kids
+      template: {
+        name: `${viewPath}/confirmation.hbs`,
+        engine: 'handlebars',
+        context: {
+          name,
+          confirmed_adults,
+          confirmed_kids
+        }
       }
     });
   } else {
-    console.log(`aquiiiiii`);
     await Mail.sendMail({
+      from: {
+        name: `${name}`,
+        address: 'noreply@claraeluizeduardo.com'
+      },
       subject: 'Reconfirmacao de convidados',
-      html: '<b>Wow Big powerful letters</b>'
+      template: {
+        name: `${viewPath}/reconfirmation.hbs`,
+        engine: 'handlebars',
+        context: {
+          name,
+          confirmed_adults,
+          confirmed_kids
+        }
+      }
     });
   }
 

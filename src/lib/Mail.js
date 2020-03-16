@@ -18,7 +18,7 @@ class Mail {
       })
     );
 
-    this.configureTemplates();
+    // this.configureTemplates();
   }
 
   configureTemplates() {
